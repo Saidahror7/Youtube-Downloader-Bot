@@ -16,7 +16,7 @@ async def ytdl(_, message):
     try:
         if userLastDownloadTime > datetime.now():
             wait_time = round((userLastDownloadTime - datetime.now()).total_seconds() / 60, 2)
-            await message.reply_text(f"`Wait {wait_time} Minutes before next Request`")
+            await message.reply_text(f"`Keyingi so'rovdan oldin {wait_time} daqiqa kuting`")
             return
     except:
         pass
@@ -31,10 +31,10 @@ async def ytdl(_, message):
                                      timedelta(minutes=youtube_next_fetch)
 
     except Exception:
-        await message.reply_text("`Failed To Fetch Youtube Data... 😔 \nPossible Youtube Blocked server ip \n#error`")
+        await message.reply_text("`Youtube ma'lumotlarini olishda xatolik yuz berdi ...😔 P \ nMumkin Youtube bloklangan server ip \ n # xato`")
         return
     buttons = InlineKeyboardMarkup(list(create_buttons(formats)))
-    sentm = await message.reply_text("Processing Youtube Url 🔎 🔎 🔎")
+    sentm = await message.reply_text("Serverdan Qidirilmoqda 🔎 🔎 🔎")
     try:
         # Todo add webp image support in thumbnail by default not supported by pyrogram
         # https://www.youtube.com/watch?v=lTTajzrSkCw
